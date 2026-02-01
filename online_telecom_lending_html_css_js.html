@@ -1,0 +1,541 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Online Telecom — Інтернет провайдер Ужгород</title>
+  <meta name="description" content="Швидкий і стабільний інтернет для дому та бізнесу: GPON/XGS-PON, 24/7 підтримка, вигідні тарифи. Перевіряйте покриття онлайн та замовляйте підключення." />
+  <meta property="og:title" content="Online Telecom — Інтернет провайдер" />
+  <meta property="og:description" content="Швидкий і стабільний інтернет для дому та бізнесу. GPON/XGS-PON, 24/7 підтримка, вигідні тарифи." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/og-image.jpg" />
+  <meta name="theme-color" content="#0ea5e9" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%230ea5e9'/><text x='50' y='58' font-size='42' text-anchor='middle' fill='white' font-family='Arial'>OT</text></svg>"> 
+  
+  <style>
+    /* ===== CSS RESET (мʼякий) ===== */
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    img,svg,video{display:block;max-width:100%;height:auto}
+    button,input,select,textarea{font:inherit}
+    :root{
+      --bg: #0b1220;           /* тло теми */
+      --bg-soft: #0f172a;      /* секції */
+      --bg-raised:#131c2e;     /* картки */
+      --text: #e6eefc;         /* текст */
+      --muted:#9db0d1;         /* вторинний */
+      --brand:#0ea5e9;         /* блакитний */
+      --accent:#f59e0b;        /* жовтий */
+      --ok:#10b981;            /* зелений */
+      --danger:#ef4444;        /* червоний */
+      --shadow: 0 10px 30px rgba(2,8,23,.35);
+      --radius: 16px;
+      --radius-lg: 22px;
+      --container: 1140px;
+    }
+    :root.light{
+      --bg:#f6f8fc; --bg-soft:#ffffff; --bg-raised:#ffffff; 
+      --text:#0b1220; --muted:#475569; --shadow: 0 10px 24px rgba(2,8,23,.08);
+    }
+    body{font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif; color:var(--text); background: radial-gradient(1200px 600px at 80% -10%, rgba(14,165,233,.18), transparent 60%), radial-gradient(900px 500px at -10% 20%, rgba(245,158,11,.12), transparent 60%), var(--bg); line-height:1.5}
+
+    /* ===== Утиліти ===== */
+    .container{max-width:var(--container); margin-inline:auto; padding-inline:20px}
+    .stack{display:grid; gap:1rem}
+    .stack-lg{display:grid; gap:1.75rem}
+    .row{display:flex; gap:1rem; flex-wrap:wrap}
+    .center{text-align:center}
+    .muted{color:var(--muted)}
+    .pill{padding:.4rem .75rem; border-radius:9999px; font-weight:600; display:inline-flex; align-items:center; gap:.5rem; background:rgba(14,165,233,.12); color:#7dd3fc; border:1px solid rgba(125,211,252,.25)}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.00)); backdrop-filter:saturate(120%) blur(8px); border:1px solid rgba(148,163,184,.15); border-radius:var(--radius); box-shadow:var(--shadow)}
+    .shadow{box-shadow:var(--shadow)}
+    .badge{border:1px solid rgba(148,163,184,.25); border-radius:999px; padding:.2rem .6rem; font-size:.85rem}
+
+    /* ===== Кнопки ===== */
+    .btn{appearance:none; border:0; border-radius:14px; padding:.9rem 1.1rem; font-weight:700; letter-spacing:.2px; cursor:pointer; transition:transform .04s ease, box-shadow .2s ease, background .2s ease; display:inline-flex; align-items:center; gap:.6rem}
+    .btn:active{transform:translateY(1px)}
+    .btn-primary{background:linear-gradient(180deg, #38bdf8, #0ea5e9); color:#08121d; box-shadow:0 10px 24px rgba(14,165,233,.35)}
+    .btn-primary:hover{filter:brightness(1.06)}
+    .btn-ghost{background:transparent; color:var(--text); border:1px solid rgba(148,163,184,.25)}
+
+    /* ===== Хедер ===== */
+    header{position:sticky; top:0; z-index:50; background:rgba(11,18,32,.6); backdrop-filter: blur(6px); border-bottom:1px solid rgba(148,163,184,.12)}
+    .nav{display:flex; align-items:center; justify-content:space-between; padding:.8rem 0}
+    .logo{display:flex; align-items:center; gap:.6rem; font-weight:900; letter-spacing:.3px}
+    .logo .mark{width:34px; height:34px; display:grid; place-items:center; border-radius:10px; background:conic-gradient(from 180deg at 50% 50%, #38bdf8, #f59e0b); color:#001628; font-weight:900}
+    nav ul{display:flex; gap:.9rem; list-style:none; margin:0; padding:0}
+    nav a{color:var(--text); text-decoration:none; padding:.5rem .7rem; border-radius:10px; font-weight:600}
+    nav a:hover{background:rgba(148,163,184,.12)}
+    .nav-actions{display:flex; align-items:center; gap:.6rem}
+    .menu-btn{display:none}
+
+    @media (max-width: 900px){
+      nav ul{display:none}
+      .menu-btn{display:inline-flex}
+      .mobile-menu{display:none; position:fixed; inset:60px 10px auto 10px; background:var(--bg-soft); border:1px solid rgba(148,163,184,.2); border-radius:16px; padding:10px}
+      .mobile-menu a{display:block; padding:.8rem 1rem; border-radius:10px}
+      .mobile-menu a:hover{background:rgba(148,163,184,.12)}
+    }
+
+    /* ===== Герой ===== */
+    .hero{padding: clamp(2rem, 6vw, 5rem) 0}
+    .hero-grid{display:grid; grid-template-columns: 1.2fr 1fr; gap:2rem; align-items:center}
+    .hero h1{font-size: clamp(1.8rem, 3.8vw, 3rem); line-height:1.15; margin:0}
+    .hero p{font-size: clamp(1rem, 1.2vw, 1.1rem); color:var(--muted)}
+    .hero .cta{display:flex; gap:.9rem; flex-wrap:wrap; margin-top:1rem}
+    .glass{border:1px solid rgba(148,163,184,.2); background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); border-radius:var(--radius-lg); padding:1rem}
+    .stats{display:grid; grid-template-columns:repeat(3, 1fr); gap:.8rem; margin-top:1rem}
+    .stat{padding:1rem; border-radius:14px; background:var(--bg-raised); border:1px solid rgba(148,163,184,.12)}
+    .stat b{font-size:1.2rem}
+    .illustration{min-height:260px; border-radius:var(--radius-lg); background: radial-gradient(600px 250px at 70% 0%, rgba(56,189,248,.25), transparent 60%), linear-gradient(135deg, rgba(245,158,11,.18), transparent 60%), var(--bg-raised); border:1px dashed rgba(148,163,184,.25); display:grid; place-items:center; text-align:center; padding:1rem}
+
+    @media (max-width: 900px){
+      .hero-grid{grid-template-columns: 1fr}
+    }
+
+    /* ===== Переваги ===== */
+    .features{padding: clamp(2rem, 5vw, 4rem) 0}
+    .feat-grid{display:grid; grid-template-columns: repeat(4, 1fr); gap:1rem}
+    .feat{padding:1.1rem; border:1px solid rgba(148,163,184,.18); border-radius:16px; background:var(--bg-raised)}
+    .feat svg{width:28px; height:28px}
+    @media (max-width: 1000px){ .feat-grid{grid-template-columns: repeat(2, 1fr)} }
+    @media (max-width: 560px){ .feat-grid{grid-template-columns: 1fr} }
+
+    /* ===== Тарифи ===== */
+    .plans{padding: clamp(2rem, 5vw, 4rem) 0}
+    .plan-grid{display:grid; grid-template-columns: repeat(3, 1fr); gap:1rem}
+    .plan{padding:1.4rem; border:1px solid rgba(148,163,184,.18); border-radius:18px; background:linear-gradient(180deg, rgba(56,189,248,.06), rgba(56,189,248,0)); position:relative}
+    .plan.popular{outline:2px solid rgba(14,165,233,.6)}
+    .plan h3{margin:.2rem 0}
+    .price{font-size:2rem; font-weight:900}
+    .price small{font-size:.9rem; font-weight:600; color:var(--muted)}
+    .plan ul{margin:.8rem 0 0; padding-left:1.1rem}
+    .switcher{display:flex; gap:.6rem; align-items:center; justify-content:center; margin-bottom:1rem}
+    .switcher input{appearance:none; width:44px; height:24px; background:#0b4660; border-radius:999px; position:relative; outline:none; cursor:pointer}
+    .switcher input::after{content:""; position:absolute; inset:3px; width:18px; height:18px; border-radius:999px; background:white; transform:translateX(0); transition:transform .2s ease}
+    .switcher input:checked{background:#0ea5e9}
+    .switcher input:checked::after{transform:translateX(20px)}
+    @media (max-width: 1000px){ .plan-grid{grid-template-columns: 1fr} }
+
+    /* ===== Покриття ===== */
+    .coverage{padding: clamp(2rem, 5vw, 4rem) 0}
+    .coverage .result{min-height:56px}
+    .tag{display:inline-flex; gap:.4rem; align-items:center; padding:.35rem .6rem; border-radius:999px; border:1px solid rgba(148,163,184,.2)}
+
+    /* ===== Speed ===== */
+    .speed{padding: clamp(2rem, 5vw, 4rem) 0}
+    .meter{display:grid; grid-template-columns: repeat(3, 1fr); gap:1rem}
+    .meter .box{padding:1.1rem; border-radius:16px; border:1px solid rgba(148,163,184,.18); background:var(--bg-raised)}
+    @media (max-width: 800px){ .meter{grid-template-columns: 1fr} }
+
+    /* ===== FAQ ===== */
+    .faq{padding: clamp(2rem, 5vw, 4rem) 0}
+    details{border:1px solid rgba(148,163,184,.2); border-radius:14px; padding:.8rem 1rem; background:var(--bg-raised)}
+    details summary{cursor:pointer; font-weight:700}
+
+    /* ===== Форма ===== */
+    .form{padding: clamp(2rem, 5vw, 4rem) 0}
+    form{display:grid; gap:.9rem}
+    label{display:grid; gap:.4rem}
+    input, textarea, select{background:var(--bg); border:1px solid rgba(148,163,184,.3); color:var(--text); border-radius:12px; padding:.8rem .9rem}
+    input:focus, textarea:focus, select:focus{outline:2px solid rgba(14,165,233,.5)}
+    .grid-2{display:grid; gap:.9rem; grid-template-columns: 1fr 1fr}
+    @media (max-width: 680px){ .grid-2{grid-template-columns: 1fr} }
+
+    /* ===== Футер ===== */
+    footer{padding:1.2rem 0; border-top:1px solid rgba(148,163,184,.12)}
+    footer .foot{display:flex; gap:1rem; justify-content:space-between; align-items:center; flex-wrap:wrap}
+
+    /* ===== Модалка ===== */
+    dialog{border:1px solid rgba(148,163,184,.25); border-radius:18px; background:var(--bg-soft); color:var(--text); box-shadow:var(--shadow); max-width:560px}
+    dialog::backdrop{background:rgba(2,8,23,.5)}
+  </style>
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Online Telecom",
+    "image": "/logo.png",
+    "telephone": "+380-00-000-0000",
+    "email": "support@onlinetelecom.uz.ua",
+    "address": {"@type":"PostalAddress","addressLocality":"Ужгород","addressCountry":"UA"},
+    "areaServed": "Ужгород та околиці",
+    "url": "https://ot.example/",
+    "sameAs": ["https://www.facebook.com/onlinetelecom.uz.ua"]
+  }
+  </script>
+</head>
+<body>
+  <!-- ===== Хедер ===== -->
+  <header>
+    <div class="container nav">
+      <a class="logo" href="#top" aria-label="Online Telecom">
+        <span class="mark">OT</span>
+        <span>Online&nbsp;Telecom</span>
+        <span class="badge" title="Місцевий провайдер">Ужгород</span>
+      </a>
+      <nav>
+        <ul aria-label="Головна навігація">
+          <li><a href="#plans">Тарифи</a></li>
+          <li><a href="#coverage">Покриття</a></li>
+          <li><a href="#features">Переваги</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Підтримка</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <button id="themeBtn" class="btn btn-ghost" aria-label="Перемкнути тему">🌙</button>
+        <button class="btn btn-primary" onclick="scrollToId('plans')">Підібрати тариф</button>
+        <button class="btn btn-ghost menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileMenu">Меню ▾</button>
+      </div>
+    </div>
+    <div class="container mobile-menu" id="mobileMenu" hidden>
+      <a href="#plans" onclick="closeMenu()">Тарифи</a>
+      <a href="#coverage" onclick="closeMenu()">Покриття</a>
+      <a href="#features" onclick="closeMenu()">Переваги</a>
+      <a href="#faq" onclick="closeMenu()">FAQ</a>
+      <a href="#contact" onclick="closeMenu()">Підтримка</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ===== Герой ===== -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="stack-lg">
+          <span class="pill">⚡ Швидкий інтернет <span class="badge">GPON / XGS‑PON</span></span>
+          <h1>Інтернет без обмежень для дому та бізнесу</h1>
+          <p>Оптика до квартири, стабільна швидкість, справжній <b>пінг</b> та <b>підтримка 24/7</b>. Без прихованих платежів. Підключимо за 1–3 дні.</p>
+          <div class="cta">
+            <button class="btn btn-primary" onclick="scrollToId('plans')">Обрати тариф</button>
+            <button class="btn btn-ghost" onclick="scrollToId('coverage')">Перевірити адресу</button>
+          </div>
+          <div class="stats">
+            <div class="stat"><div class="muted">Аптайм</div><b>99.9%</b></div>
+            <div class="stat"><div class="muted">Саппорт</div><b>24/7</b></div>
+            <div class="stat"><div class="muted">Інфраструктура</div><b>10 Гбіт</b></div>
+          </div>
+        </div>
+        <div class="illustration card">
+          <div>
+            <svg width="120" height="120" viewBox="0 0 120 120" role="img" aria-label="Іконка мережі"><defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#38bdf8"/><stop offset="1" stop-color="#f59e0b"/></linearGradient></defs><circle cx="60" cy="60" r="52" fill="none" stroke="url(#g)" stroke-width="4"/><circle cx="60" cy="60" r="4" fill="#38bdf8"/><path d="M20,70 A40,40 0 0 1 100,70" fill="none" stroke="url(#g)" stroke-width="6" stroke-linecap="round"/></svg>
+            <p class="muted">Оптика до дому • IPv6 • Публічні IP • IPTV / VoIP</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Переваги ===== -->
+    <section id="features" class="features">
+      <div class="container stack">
+        <div class="center stack">
+          <h2>Чому <span class="badge">Online&nbsp;Telecom</span>?</h2>
+          <p class="muted">Швидкість, стабільність та сервіс, за який не соромно.</p>
+        </div>
+        <div class="feat-grid">
+          <article class="feat">
+            <div class="row" style="align-items:center; gap:.6rem">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12h3l3 8 4-16 3 8h5"/></svg>
+              <h3>Справжні швидкості</h3>
+            </div>
+            <p class="muted">Оптична мережа до підʼїзду/квартири. Без «до» в дрібному шрифті.</p>
+          </article>
+          <article class="feat">
+            <div class="row" style="align-items:center; gap:.6rem">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              <h3>99.9% аптайм</h3>
+            </div>
+            <p class="muted">Резервні лінки, моніторинг і черговий інженер 24/7.</p>
+          </article>
+          <article class="feat">
+            <div class="row" style="align-items:center; gap:.6rem">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+              <h3>Публічні IP / IPv6</h3>
+            </div>
+            <p class="muted">Статика, динаміка, IPv6 — під ігри, відеонагляд, сервери.</p>
+          </article>
+          <article class="feat">
+            <div class="row" style="align-items:center; gap:.6rem">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 7l-8 10-5-5"/></svg>
+              <h3>Чесні умови</h3>
+            </div>
+            <p class="muted">Без прихованих комісій. Договір — прозорий і короткий.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Тарифи ===== -->
+    <section id="plans" class="plans">
+      <div class="container stack">
+        <div class="center stack">
+          <h2>Тарифи для дому</h2>
+          <div class="switcher" title="Перемикач місячної/річної оплати">
+            <span class="muted">Щомісяця</span>
+            <input type="checkbox" id="billingToggle" aria-label="Річна оплата" />
+            <span class="muted">Річна −10%</span>
+          </div>
+        </div>
+        <div class="plan-grid">
+          <article class="plan card" data-plan="Базовий 100 Мбіт">
+            <span class="badge">до 100 Мбіт/с</span>
+            <h3>Базовий</h3>
+            <div class="price"><span class="price-value" data-month="200" data-year="2160">200₴</span> <small>/ міс</small></div>
+            <ul class="muted">
+              <li>GPON до квартири</li>
+              <li>Wi‑Fi 2.4 ГГц</li>
+              <li>Техпідтримка 24/7</li>
+            </ul>
+            <div class="row" style="margin-top:1rem">
+              <button class="btn btn-ghost" onclick="openOrder(this)">Замовити</button>
+            </div>
+          </article>
+          <article class="plan card popular" data-plan="Оптимальний 500 Мбіт">
+            <span class="badge" style="border-color:transparent; background:linear-gradient(90deg,#38bdf8,#f59e0b); color:#03121f">Рекомендовано</span>
+            <h3>Оптимальний</h3>
+            <div class="price"><span class="price-value" data-month="300" data-year="3240">300₴</span> <small>/ міс</small></div>
+            <ul class="muted">
+              <li>до 500 Мбіт/с</li>
+              <li>Wi‑Fi 5 ГГц</li>
+              <li>Публічний IPv4 за запитом</li>
+            </ul>
+            <div class="row" style="margin-top:1rem">
+              <button class="btn btn-primary" onclick="openOrder(this)">Замовити</button>
+            </div>
+          </article>
+          <article class="plan card" data-plan="Максимальний 1 Гбіт">
+            <span class="badge">до 1 Гбіт/с</span>
+            <h3>Максимальний</h3>
+            <div class="price"><span class="price-value" data-month="450" data-year="4860">450₴</span> <small>/ міс</small></div>
+            <ul class="muted">
+              <li>XGS‑PON готовність</li>
+              <li>Wi‑Fi 6 (опція)</li>
+              <li>Преміум підтримка</li>
+            </ul>
+            <div class="row" style="margin-top:1rem">
+              <button class="btn btn-ghost" onclick="openOrder(this)">Замовити</button>
+            </div>
+          </article>
+        </div>
+        <p class="muted center">* Вартість підключення та оренди ONU/роутера уточнюйте у менеджера.</p>
+      </div>
+    </section>
+
+    <!-- ===== Покриття ===== -->
+    <section id="coverage" class="coverage">
+      <div class="container stack">
+        <h2 class="center">Перевірити покриття</h2>
+        <div class="card" style="padding:1rem">
+          <div class="grid-2">
+            <label>
+              Вулиця та № будинку
+              <input id="addr" placeholder="Приклад: Котляревського 10" autocomplete="street-address" />
+            </label>
+            <label>
+              Район/Населений пункт
+              <input id="area" placeholder="Ужгород" />
+            </label>
+          </div>
+          <div class="row" style="margin-top:.8rem; align-items:center">
+            <button class="btn btn-primary" onclick="checkCoverage()">Перевірити</button>
+            <span class="muted">або напишіть нам у підтримку — відповімо за кілька хвилин</span>
+          </div>
+          <div id="coverageResult" class="result stack" style="margin-top:1rem"></div>
+        </div>
+        <p class="muted center">Мапа: <a href="https://maps.google.com" target="_blank" rel="noopener">відкрити Google Maps</a></p>
+      </div>
+    </section>
+
+    <!-- ===== Speed / Network Info ===== -->
+    <section class="speed">
+      <div class="container stack">
+        <h2 class="center">Ваше підключення (браузерні дані)</h2>
+        <div class="meter">
+          <div class="box">
+            <div class="muted">Приблизна швидкість (Downlink)</div>
+            <div style="font-size:1.8rem; font-weight:800" id="downlink">—</div>
+            <div class="muted">Зчитано з <code>navigator.connection</code> (не всі браузери підтримують)</div>
+          </div>
+          <div class="box">
+            <div class="muted">Орієнтовна затримка (RTT)</div>
+            <div style="font-size:1.8rem; font-weight:800" id="rtt">—</div>
+            <div class="muted">Менше = краще для ігор та дзвінків</div>
+          </div>
+          <div class="box">
+            <div class="muted">Порада</div>
+            <p>Для точного тесту відкрийте <a href="https://www.speedtest.net/" target="_blank" rel="noopener">Speedtest</a> або <a href="https://fast.com/" target="_blank" rel="noopener">Fast.com</a>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section id="faq" class="faq">
+      <div class="container stack-lg">
+        <h2 class="center">Поширені питання</h2>
+        <details>
+          <summary>Скільки коштує підключення?</summary>
+          <p>Від 0 до 1000₴ — залежно від будинку, наявності розводки та обраного обладнання. Точну суму назве майстер після безкоштовного огляду.</p>
+        </details>
+        <details>
+          <summary>Чи є публічні IP‑адреси та IPv6?</summary>
+          <p>Так. Динамічна — безкоштовно, статична IPv4 — за запитом. IPv6 видаємо за замовчуванням.</p>
+        </details>
+        <details>
+          <summary>Скільки часу займає підключення?</summary>
+          <p>Зазвичай 1–3 робочі дні після заявки. Терміново — за окремою домовленістю.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- ===== Форма ===== -->
+    <section id="contact" class="form">
+      <div class="container stack">
+        <h2 class="center">Залишити заявку</h2>
+        <div class="card" style="padding:1rem">
+          <form id="leadForm" onsubmit="submitLead(event)">
+            <div class="grid-2">
+              <label>Імʼя <input name="name" required placeholder="Ваше імʼя" /></label>
+              <label>Телефон <input name="phone" required placeholder="+380XXXXXXXXX" pattern="\+?\d{10,13}" /></label>
+            </div>
+            <label>Адреса підключення <input name="address" required placeholder="Місто, вулиця, №" /></label>
+            <label>Оберіть тариф
+              <select name="plan">
+                <option value="Базовий 100 Мбіт">Базовий — 100 Мбіт</option>
+                <option value="Оптимальний 500 Мбіт" selected>Оптимальний — 500 Мбіт</option>
+                <option value="Максимальний 1 Гбіт">Максимальний — 1 Гбіт</option>
+              </select>
+            </label>
+            <label>Коментар <textarea name="comment" rows="3" placeholder="Зручний час дзвінка, роутер тощо"></textarea></label>
+            <div class="row" style="align-items:center; gap:.8rem">
+              <button class="btn btn-primary" type="submit">Відправити заявку</button>
+              <span class="muted">Або телефонуйте: <a href="tel:+380000000000">+380 00 000 0000</a></span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container foot">
+      <div class="row" style="gap:.6rem; align-items:center">
+        <span class="logo"><span class="mark" style="width:26px;height:26px">OT</span> Online&nbsp;Telecom</span>
+        <span class="muted">© <span id="year"></span> Online Telecom LLC. Всі права захищено.</span>
+      </div>
+      <div class="row muted" style="gap:1rem">
+        <a href="#" aria-label="Facebook">Facebook</a>
+        <a href="#" aria-label="Instagram">Instagram</a>
+        <a href="#" aria-label="Документи">Публічна оферта</a>
+        <a href="#" aria-label="Політика конфіденційності">Політика</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== Модальне вікно Замовлення ===== -->
+  <dialog id="orderModal">
+    <form method="dialog" class="stack" style="padding:1rem">
+      <h3>Замовлення тарифу</h3>
+      <p class="muted">Ви обрали: <b id="modalPlan">—</b></p>
+      <div class="row" style="justify-content:flex-end; gap:.6rem">
+        <button class="btn btn-ghost" value="cancel">Скасувати</button>
+        <button class="btn btn-primary" value="ok" onclick="prefillPlan()">Заповнити форму</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script>
+    // ===== Тема (light/dark) =====
+    const root = document.documentElement;
+    const themeBtn = document.getElementById('themeBtn');
+    function applyTheme(v){ root.classList.toggle('light', v==='light'); themeBtn.textContent = v==='light' ? '☀️' : '🌙'; localStorage.setItem('theme', v); }
+    applyTheme(localStorage.getItem('theme') || 'dark');
+    themeBtn.addEventListener('click', ()=>{ applyTheme(root.classList.contains('light') ? 'dark' : 'light'); });
+
+    // ===== Мобільне меню =====
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn?.addEventListener('click', ()=>{
+      const open = mobileMenu.hasAttribute('hidden');
+      mobileMenu.toggleAttribute('hidden');
+      menuBtn.setAttribute('aria-expanded', open);
+    });
+    function closeMenu(){ mobileMenu.setAttribute('hidden',''); menuBtn.setAttribute('aria-expanded','false'); }
+
+    // ===== Плавний скрол =====
+    function scrollToId(id){ document.getElementById(id)?.scrollIntoView({behavior:'smooth', block:'start'}); }
+    window.scrollToId = scrollToId; // для інлайнових викликів
+
+    // ===== Перемикач оплати (місяць/рік) =====
+    const toggle = document.getElementById('billingToggle');
+    toggle?.addEventListener('change', ()=>{
+      document.querySelectorAll('.price-value').forEach(el=>{
+        const month = el.dataset.month, year = el.dataset.year;
+        if(toggle.checked){ el.textContent = year + '₴'; el.nextElementSibling?.replaceChildren(document.createTextNode(' / рік')); }
+        else { el.textContent = month + '₴'; el.nextElementSibling?.replaceChildren(document.createTextNode(' / міс')); }
+      });
+    });
+
+    // ===== Покриття (демо логіка; змініть під ваші дані) =====
+    const streets = [
+      'Котляревського','Собранецька','Легоцького','Минайська','Заньковецької','Капушанська','8 Березня','Гагаріна','Фединця','Швабська','Володимирська','Шумна'
+    ];
+    function checkCoverage(){
+      const addr = document.getElementById('addr').value.trim();
+      const area = document.getElementById('area').value.trim().toLowerCase();
+      const box = document.getElementById('coverageResult');
+      box.innerHTML = '';
+      if(!addr){ box.innerHTML = '<p class="muted">Вкажіть адресу.</p>'; return; }
+      const hit = streets.find(s => addr.toLowerCase().includes(s.toLowerCase()));
+      if(hit && (!area || area.includes('уж') || area.includes('uzh'))){
+        box.innerHTML = `<div class="tag">✅ <b>Покриття знайдено</b></div>
+          <p>На адресі <b>${addr}</b> доступні: <b>GPON</b>, <b>500 Мбіт</b>, <b>1 Гбіт</b>. Можлива підготовка до <b>XGS‑PON</b>.</p>
+          <button class="btn btn-primary" onclick="scrollToId('contact')">Залишити заявку</button>`;
+      } else {
+        box.innerHTML = `<div class="tag">ℹ️ <b>Потрібна перевірка</b></div>
+          <p>Залиште заявку — інженер перевірить можливість підключення протягом робочого дня.</p>
+          <button class="btn btn-ghost" onclick="scrollToId('contact')">Залишити заявку</button>`;
+      }
+    }
+
+    // ===== Браузерні мережеві показники =====
+    function updateNetInfo(){
+      const c = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+      document.getElementById('downlink').textContent = c?.downlink ? c.downlink + ' Мбіт/с*' : 'Н/Д';
+      document.getElementById('rtt').textContent = c?.rtt ? c.rtt + ' мс*' : 'Н/Д';
+    }
+    updateNetInfo();
+    (navigator.connection||{}).addEventListener?.('change', updateNetInfo);
+
+    // ===== Замовлення через модалку =====
+    const orderModal = document.getElementById('orderModal');
+    let selectedPlan = null;
+    function openOrder(btn){
+      const card = btn.closest('[data-plan]');
+      selectedPlan = card?.dataset.plan || null;
+      document.getElementById('modalPlan').textContent = selectedPlan || '—';
+      orderModal.showModal();
+    }
+    function prefillPlan(){
+      if(selectedPlan){ document.querySelector('select[name="plan"]').value = selectedPlan; }
+    }
+    window.openOrder = openOrder; window.prefillPlan = prefillPlan;
+
+    // ===== Відправка форми (демо: відкриває e-mail клієнт) =====
+    function submitLead(e){
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(e.target).entries());
+      // TODO: замініть на реальний бекенд або Formspree / API бота
+      const subject = encodeURIComponent('Заявка з сайту — ' + (data.plan||''));
+      const body = encodeURIComponent(`Імʼя: ${data.name}\nТелефон: ${data.phone}\nАдреса: ${data.address}\nТариф: ${data.plan}\nКоментар: ${data.comment||''}`);
+      window.location.href = `mailto:support@onlinetelecom.uz.ua?subject=${subject}&body=${body}`;
+    }
+    window.submitLead = submitLead;
+
+    // ===== Рік у футері =====
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
